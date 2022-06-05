@@ -1,0 +1,105 @@
+.register-div{
+    background-color: var(--orange);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+.logo-div{
+    width: 60%;
+}
+.form-container{
+    margin:3% 2% 3% 10% !important;
+    width: 25%;
+    background-color: var(--pureWhite);
+    height: 80vh;
+    border-radius: 5px;
+}
+.logo{
+    width: 40%;
+    height:67px;
+    margin:29% 20% !important;
+    object-fit: cover;
+}
+.form-container-logo{
+    margin: 5% 27% 3% !important;
+    width: 47%;
+    height: 33px;
+    object-fit: cover;
+}
+.form-container-description{
+    margin-top: 10% !important;
+    width: 100%;
+    padding: 2% 8% !important;
+}
+.welcome-text{
+    color: #223263;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: center;
+    margin: 2% 0% !important;
+}
+.welcome-sub-text{
+    text-align: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin:0% 0% 2% !important;
+}
+.register-input::placeholder {
+    font-size: 12px;
+    color: #bab8b8;
+}
+  input.active:invalid {
+    outline: none;
+    border-color: #ad1d1d;
+    --tw-ring-color: #ad1d1d;
+  }
+  .error {
+    color: #ad1d1d;
+    font-family: "Roboto", sans-serif;
+    font-size: small;
+  }
+  .input-group{
+      width: 100%;
+      margin: 5% 0% !important;
+  }
+  .register-input{
+      width: 95%;
+      border: 1px solid #ececec !important;
+      padding: 2% 9% !important;
+      font-size: 14px;
+      border-radius: 5px;
+  }
+  .register-input:focus{
+      border: none;
+      outline: none;
+  }
+  form{
+      margin-top: 10% !important;
+  }
+
+  .register-btn{
+      width: 95% !important;
+      padding: 3% 5% !important;
+      background-color: var(--orange) !important;
+      color: var(--pureWhite);
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+    }
+    .register-btn:hover{
+      background-color: #e78a17 !important;
+    }
+    .check-account{
+        margin: 3% 0% !important;
+    }
+    .check-account-text{
+        text-align: center;
+        font-size: 13px;
+        color: var(--gray);
+    }
+    .check-account-link{
+        color:var(--orange) !important;
+        font-weight: bold;
+        text-decoration: underline;
+    }

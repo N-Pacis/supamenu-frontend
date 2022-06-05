@@ -1,0 +1,58 @@
+.search-container{
+    padding: 0% 35% !important;
+    width: 100%;
+}
+
+.search-restaurant-icon{
+    font-size: 21px;
+    color: var(--orange);
+    position: relative;
+    top:32px;
+    left: 10px;
+}
+
+.nearby-restaurants-container{
+    padding: 1% 0% !important;
+    background-image: url("../assets/search/search.png");
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    height: auto;
+}
+.nearby-title{
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    color:var(--dark);
+}
+.app-low-banner-restaurant{
+    padding: 17% 0% !important;
+    background-image: url("../assets/Restaurant/restaurant-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    height: auto;
+    min-height: 61vh;
+}
+.restaurant-image{
+    width: 50%;
+    height: 200px;
+    border-radius: 999px;
+    position: absolute; 
+    object-fit: cover;
+    left: 25%;
+    top:220px;
+}
+.restaurant-menu-btn{
+    margin:0% 37% !important;
+    width: 45% !important;
+    padding: 1% 5% !important;
+    background-color: var(--orange) !important;
+    color: var(--pureWhite);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .restaurant-menu-btn:hover{
+    background-color: #e78a17 !important;
+  }

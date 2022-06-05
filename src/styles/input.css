@@ -1,0 +1,49 @@
+label {
+    color: #868585;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 14px;
+    transition: 0.2s ease-in-out;
+  }
+  .input-text::placeholder {
+    font-size: 14px;
+    font-weight: bold;
+    color: #bab8b8;
+  }
+  .select-container:focus-within label,
+  .input-container:focus-within label {
+    color: #1d5fad;
+  }
+  input.active:invalid {
+    outline: none;
+    border-color: #ad1d1d;
+    --tw-ring-color: #ad1d1d;
+  }
+  .error {
+    color: #ad1d1d;
+    font-family: "Roboto", sans-serif;
+    font-size: small;
+  }
+  .edit-placeholder {
+    padding-left: 12px !important;
+  }
+  .edit-placeholder,
+  .edit-placeholder::placeholder,
+  .edit-select {
+    font-size: 0.9rem;
+  }
+  
+  
+  .react-selector {
+    font-size: 11px;
+  }
+
+  .input-field{
+      width: 100%;
+      padding:2.5% 9% !important;
+      border-radius: 5px;
+  }
+  .input-field:focus{
+      border: none;
+      outline: none;
+  }
