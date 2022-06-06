@@ -1,0 +1,114 @@
+
+.accordion__section {
+  margin: 2% 0% !important;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.accordion__section>div{
+  margin:1% 0% !important;
+}
+.accordion {
+  cursor: pointer;
+  padding: 18px;
+  display: flex;
+  margin: 2% 0% !important;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  outline: none;
+  transition: background-color 0.6s ease;
+}
+.accordion__title {
+  font-size: 14px;
+}
+.active_title{
+  color: var(--orange);
+}
+.accordion__icon {
+  margin-left: auto !important;
+  transition: transform 0.6s ease;
+  color: var(--orange)
+}
+.rotate {
+  transform: rotate(90deg);
+}
+.accordion__content {
+  background-color: white;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+.accordion__text {
+  padding: 18px;
+  font-size: 5px !important;
+}
+.menu-item{
+  width: 100%;
+  display: flex !important;
+}
+.menu-item__desc{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.menu-item__name{
+  margin: 2% 0% !important;
+  font-size: 13px;
+  color: var(--dark);
+}
+.menu-item__price{
+  font-size: 14px;
+  color: var(--gray);
+}
+.add-to-cart-btn{
+  padding: 0.1% 4% !important;
+  background-color: var(--orange);
+  color: var(--pureWhite);
+  font-weight: 700;
+  font-size: 13px;
+  height:25px !important;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5% !important;
+  margin-bottom: 2% !important;
+}
+.add-to-cart-btn:hover{
+  background-color: #e78a17 !important;
+}
+.remove-from-cart-btn{
+  border: 1px dashed red !important;
+  padding: 0.1% 4% !important;
+  background-color: var(--pureWhite) !important;
+  color: red;
+  font-weight: 700;
+  font-size: 15px;
+  height:25px !important;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5% !important;
+  margin-bottom: 2% !important;
+  transition: background-color 0.5s;
+}
+.remove-from-cart-btn:hover{
+  border: none;
+  color: var(--pureWhite) !important;
+  background-color: rgb(216, 33, 33) !important;
+}
+.accordion-image{
+  margin: 2% 2% 2% 0% !important;
+  width: 15%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+@media (min-width: 700px) and (max-width: 1024px){
+  .accordion__section{
+    width: 90%;
+  }
+}
+@media (max-width: 700px){
+  .accordion__section{
+    width: 95%;
+  }
+}

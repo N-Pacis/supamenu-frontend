@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "crypto-js": "^4.1.1",
     "moment": "^2.29.3",
     "react": "^17.0.2",
     "react-alert-confirm": "^3.3.6",
@@ -25,11 +26,10 @@
     "react-toastify": "^7.0.4",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0",
+    "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
     "swiper": "^8.1.1",
-    "tailwindcss": "^2.2.6",
-    "crypto-js": "^4.1.1"
+    "tailwindcss": "^2.2.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

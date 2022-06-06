@@ -16,6 +16,7 @@ import Login from "./views/Login";
 import Register from './views/Register';
 import ViewRestaurant from "./views/ViewRestaurant";
 import Menu from "./views/Menu";
+import Checkout from "./views/Checkout";
 
 function PrivateRoute({ children, ...rest }) {
   return (
@@ -76,6 +77,9 @@ export default function App() {
         </Route>
         <Route exact path="/restaurants/:id/menu">
           <Menu />
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout />
         </Route>
       </Switch>
     </Router>
