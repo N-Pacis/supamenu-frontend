@@ -1,7 +1,7 @@
 import * as actions from "../actions/serviceProvidersAction";
 
 export const initialState = {
-  serviceProdiders: [],
+  serviceProviders: [],
   loading: false
 };
 export default function serviceProvidersReducer(state = initialState, action) {
@@ -10,7 +10,7 @@ export default function serviceProvidersReducer(state = initialState, action) {
       return { ...state, loading: true };
     case actions.GET_SERVICE_PROVIDERS_SUCCESS:
       return {
-        serviceProdiders: action.payload,
+        serviceProviders: action.payload,
         loading: false
       };
     case actions.GET_SERVICE_PROVIDERS_FAILURE:

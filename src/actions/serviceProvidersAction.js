@@ -38,10 +38,25 @@ export function fetchServiceProviders() {
             let serviceProvidersFromBackend = await axios.get(`${ENDPOINT}${url}`, {
                 headers: authHeader(),
             });
-            serviceProvidersFromBackend = serviceProvidersFromBackend.data.data;
+            serviceProvidersFromBackend = serviceProvidersFromBackend.data.content;
             dispatch(getServiceProvidersSuccess(serviceProvidersFromBackend));
         } catch (error) {
             dispatch(getServiceProvidersFailure());
         }
     };
+}
+
+export async function fetchById(id) {
+    try {
+        const url = `/service-providers/${id}`;
+
+        let serviceProviderFromBackend = await axios.get(`${ENDPOINT}${url}`, {
+            headers: authHeader(),
+        });
+        serviceProviderFromBackend = serviceProviderFromBackend.data.data;
+        return serviceProviderFromBackend
+    }
+    catch (error) {
+        toast.error("Getting service Provider Failed");
+    }
 }

@@ -4,15 +4,15 @@ import { encrypt } from '../services/crypto.js';
 const ENDPOINT = import.meta.env.VITE_REACT_APP_BASE_API_URL;
 
 // get loged in user profile
-export const getLoginUserProfile = () => {
-  const url = `${ENDPOINT}/user/profile`;
+export const getLoginUserProfile = (id) => {
+  const url = `${ENDPOINT}/users/${id}`;
   return axios
     .get(url, {
       headers: authHeader()
     })
     .then((res) => {
-      const hashedPayload = encrypt(res.data.data);
+      const hashedPayload = encrypt(res.data);
       sessionStorage.setItem("hash", hashedPayload);
-      return res.data.data;
+      return res.data;
     });
 };

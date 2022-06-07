@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/landing.css";
 import "../styles/menu.css";
 import Navbar from "../components/Navbar/Navbar";
@@ -6,18 +6,20 @@ import MenuCategories from "../components/Menu/MenuCategories";
 import CartItems from "../components/Menu/CartItems";
 import { connect } from "react-redux";
 import { saveCartItemsFn } from "../actions/cartItemsAction";
+import { useParams } from "react-router-dom";
+import { fetchById } from "../actions/serviceProvidersAction";
 
 const Menu = ({
     dispatch,
     cartItemsArr
 }) => {
+    const {id} = useParams();
+    const [serviceProvider,setServiceProvider] = useState({})
 
-    const restaurant = {
-        "id": "1",
-        "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-        "name": "Restaurant 1",
-        "description": "World,African,Pizzeria,Coffee"
-    }
+    useEffect(async()=>{
+        let provider = await fetchById(id)
+        setServiceProvider(provider)
+    },[])
 
     const categories = [
         {
@@ -141,13 +143,13 @@ const Menu = ({
         <>
             <div className="app-top-banner">
                 <Navbar />
-                <h2 className="app-title">{restaurant.name}</h2>
-                <p className="app-slogan">{restaurant.description}</p>
+                <h2 className="app-title">{serviceProvider.name}</h2>
+                <p className="app-slogan">{serviceProvider.address}</p>
             </div>
             <div className="app-low-banner">
                 <div className="app-restaurant-image">
                     <img
-                        src={restaurant.imageUrl}
+                        src={serviceProvider.defaultPic?.url}
                         className="app-restaurant-image-img"
                     />
                 </div>

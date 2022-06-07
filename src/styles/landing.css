@@ -101,14 +101,14 @@
     width: 30%;
     height: 100%;
     border-radius: 5px;
-    border: none !important;
+    border:1px solid transparent !important;
 }
 .restaurant-card-description{
     font-size: 12px;
 }
 .restaurant-name-description{
     width: 70%;
-    padding: 2% 2% !important;
+    padding: 2% 5% !important;
 }
 .restaurant-card-title{
     margin: 2% 0% !important;
@@ -116,7 +116,11 @@
     font-weight: bold;
     color:var(--dark);
     
-    text-align: center;
+    text-align: left;
+}
+.restaurant-card-description{
+    text-align: left !important;
+    font-size: 14px;
 }
 .nearby-restaurants-card-holder{
     margin: 2% 0% !important;

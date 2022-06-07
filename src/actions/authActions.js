@@ -26,8 +26,8 @@ export const login = (loginData) => (dispatch) => {
   });
 
   return AuthService.login(loginData).then(
-    () => {
-      getLoginUserProfile()
+    (resp) => {
+      getLoginUserProfile(resp.id)
         .then((res) => {
           dispatch({
             type: LOGIN_SUCCESS,

@@ -17,6 +17,7 @@
     background-repeat: no-repeat;
     background-size: cover !important;
     height: auto;
+    width: 100% !important;
 }
 .nearby-title{
     font-size: 22px;

@@ -11,11 +11,9 @@ const Navbar = ({
     isLoggedIn
 }) => {
     const { user } = useSelector((state) => state.auth);
-    let { firstName = "", lastName = "" } = user?.profile || {};
-    if (user) {
-        setIsLoggedIn(true)
-    }
-    const avatar = `https://ui-avatars.com/api/?name=${firstName}+${lastName}&bold=true`
+    let { firstName = "", lastName = "" } = user || {};
+    
+    const avatar = `https://ui-avatars.com/api/?name=${firstName}&bold=true`
     return (
         <div className="navbar-div">
             <div className="app-logo-div">
@@ -41,7 +39,7 @@ const Navbar = ({
                                 className="bell-icon"
                             />
                             <p className="separator">|</p>
-                            <p className="username">{firstName + " " + lastName}</p>
+                            <p className="username">{firstName }</p>
                             <img
                                 src={avatar}
                                 className="user-avatar"

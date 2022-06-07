@@ -6,10 +6,11 @@ import Input from "../components/Input";
 import { FaSearch } from "react-icons/fa";
 import RestaurantCard from "../components/Search/RestaurantCard";
 import { connect } from "react-redux";
+import {fetchServiceProviders} from "../actions/serviceProvidersAction"
 
 const Search = ({ 
     dispatch,
-    nearbyRestaurants,
+    serviceProvidersArr,
     loading
 }) => {
     const [searchData, setSearchData] = useState('')
@@ -25,8 +26,8 @@ const Search = ({
     }, [searchData])
 
     useEffect(()=>{
-        console.t(nearbyRestaurants)
-    },[nearbyRestaurants])
+        dispatch(fetchServiceProviders())
+    },[dispatch])
 
     // const nearbyRestaurants = [
     //     {
@@ -94,12 +95,12 @@ const Search = ({
                             <h1 className="nearby-title">Nearby Restaurants</h1>
                             <div className="nearby-restaurants-card-holder">
                                 {
-                                    nearbyRestaurants.map(restaurant => (
+                                    serviceProvidersArr.map(restaurant => (
                                         <RestaurantCard
                                             key={restaurant.id}
-                                            imageUrl={restaurant.imageUrl}
+                                            imageUrl={restaurant.defaultPic?.url}
                                             title={restaurant.name}
-                                            description={restaurant.description}
+                                            description={restaurant.address}
                                             id={restaurant.id}
                                         />
                                     ))
@@ -111,10 +112,11 @@ const Search = ({
         </>
     );
 };
-const mapStateToProps = (state) => ({
-    nearbyRestaurants: state.serviceProv.serviceProviders,
-    loading: state.serviceProv.serviceProviders,
-
-  });
+const mapStateToProps = (state) => {
+    return  ({
+    serviceProvidersArr: state.serviceProv.serviceProviders,
+    loading: state.serviceProv.loading,
+  })
+};
   
 export default connect(mapStateToProps)(Search);
