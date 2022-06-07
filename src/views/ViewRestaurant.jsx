@@ -3,25 +3,29 @@ import "../styles/landing.css";
 import "../styles/search.css"
 import Navbar from "../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { fetchById } from "../actions/serviceProvidersAction";
 
 const ViewRestaurant = () => {
-    const restaurant = {
-        "id": "1",
-        "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-        "name": "Restaurant 1",
-        "description": "World,African,Pizzeria,Coffee"
-    }
+    const {id} = useParams();
+    const [serviceProvider,setServiceProvider] = useState({})
+    
+    useEffect(async()=>{
+        let provider = await fetchById(id)
+        console.table(provider)
+        setServiceProvider(provider)
+    },[])
 
     return (
         <>
             <div className="app-top-banner">
                 <Navbar />
-                <h2 className="app-title">{restaurant.name}</h2>
-                <p className="app-slogan">{restaurant.description}</p>
-                <img src={restaurant.imageUrl} className="restaurant-image"/>
+                <h2 className="app-title">{serviceProvider?.name}</h2>
+                <p className="app-slogan">{serviceProvider?.address}</p>
+                <img src={serviceProvider?.imageUrl} className="restaurant-image"/>
             </div>
             <div className="app-low-banner-restaurant">
-                <Link to={`/restaurants/${restaurant.id}/menu`} className="restaurant-menu-btn">Checkout Menu</Link>
+                <Link to={`/restaurants/${serviceProvider?.id}/menu`} className="restaurant-menu-btn">Checkout Menu</Link>
             </div>
         </>
     );

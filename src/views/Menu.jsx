@@ -7,7 +7,7 @@ import CartItems from "../components/Menu/CartItems";
 import { connect } from "react-redux";
 import { saveCartItemsFn } from "../actions/cartItemsAction";
 import { useParams } from "react-router-dom";
-import { fetchById } from "../actions/serviceProvidersAction";
+import { fetchById, fetchMenuCategories } from "../actions/serviceProvidersAction";
 
 const Menu = ({
     dispatch,
@@ -15,100 +15,19 @@ const Menu = ({
 }) => {
     const {id} = useParams();
     const [serviceProvider,setServiceProvider] = useState({})
+    const [categories,setCategories] = useState([])
 
     useEffect(async()=>{
         let provider = await fetchById(id)
+        let categoriesFromBackend = await fetchMenuCategories(id)
         setServiceProvider(provider)
+        setCategories(categoriesFromBackend)
     },[])
 
-    const categories = [
-        {
-            id: "1",
-            name: "Appetizer",
-            menu: [
-                {
-                    id: "1000",
-                    name: "Meat soup",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 15
-                },
-                {
-                    id: "2000",
-                    name: "Chinese soup",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",                    
-                    quantity:1,
-                    price: 15
-                },
-            ]
-        },
-        {
-            id: "2",
-            name: "Starter",
-            menu: [
-                {
-                    id: "3000",
-                    name: "Salad",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 15
-                },
-                {
-                    id: "4000",
-                    name: "Spaghetti",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 16
-                }
-            ]
-        },
-        {
-            id: "3",
-            name: "Main",
-            menu: [
-                {
-                    id: "6000",
-                    name: "Eggs",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 10
-                },
-                {
-                    id: "7000",
-                    name: "Burger",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 10
-                }
-            ]
-        },
-        {
-            id: "4",
-            name: "Dessert"
-        },
-        {
-            id: "5",
-            name: "Drink",
-            menu: [
-                {
-                    id: "8000",
-                    name: "Fanta",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 15
-                },
-                {
-                    id: "9000",
-                    name: "Beer",
-                    imageUrl: "https://media.istockphoto.com/photos/diverse-keto-dishes-picture-id1280158821?b=1&k=20&m=1280158821&s=170667a&w=0&h=ibwKxBzWcygq6NMKO5FTD-3ljLvwM8E1WVevw7XSmlk=",
-                    quantity:1,
-                    price: 23
-                }
-            ]
-        }
-    ]
+   
     const onAddToCartFn = (item) => {
         if (!isFoundInCart(item)) {
+            item.quantity = 1;
             dispatch(saveCartItemsFn([...cartItemsArr, item]))
         }
     }

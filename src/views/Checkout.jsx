@@ -29,7 +29,7 @@ const Checkout = ({
         setActivePaymentMethod(paymentMethod)
     }
 
-    let totalAmount = cartItemsArr.map(item => item.price * item.quantity).reduce((a, b) => a + b, 0);
+    let totalAmount = cartItemsArr.map(item => item.unitPrice * item.quantity).reduce((a, b) => a + b, 0);
 
     return (
         <>

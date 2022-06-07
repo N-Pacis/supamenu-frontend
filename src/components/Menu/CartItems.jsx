@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/menu.css";
 import {Link} from "react-router-dom"
 const CartItems = ({ cartItems, onUpdateCart }) => {
-    let totalAmount = cartItems.map(item => item.price * item.quantity).reduce((a, b) => a + b, 0);
+    let totalAmount = cartItems.map(item => item.unitPrice * item.quantity).reduce((a, b) => a + b, 0);
     return (
         <>
             {cartItems.map(item => (
@@ -11,7 +11,7 @@ const CartItems = ({ cartItems, onUpdateCart }) => {
                         <img src={item.imageUrl} className="cart-item-image" />
                         <div className="cart-item__desc">
                             <h3 className="cart-item__name">{item.name}</h3>
-                            <p className="cart-item__price">{item.price} RWF</p>
+                            <p className="cart-item__price">{item.unitPrice} RWF</p>
                         </div>
                         <div className="cart-buttons">
                             <button className="cart-item__btn" onClick={() => onUpdateCart(item, item.quantity - 1)}>-</button>

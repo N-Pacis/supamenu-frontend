@@ -53,10 +53,25 @@ export async function fetchById(id) {
         let serviceProviderFromBackend = await axios.get(`${ENDPOINT}${url}`, {
             headers: authHeader(),
         });
-        serviceProviderFromBackend = serviceProviderFromBackend.data.data;
+        serviceProviderFromBackend = serviceProviderFromBackend.data;
         return serviceProviderFromBackend
     }
     catch (error) {
         toast.error("Getting service Provider Failed");
+    }
+}
+
+export async function fetchMenuCategories(id) {
+    try {
+        const url = `/menu-categories/listAll/service-provider/${id}`;
+
+        let MenuCategories = await axios.get(`${ENDPOINT}${url}`, {
+            headers: authHeader(),
+        });
+        MenuCategories = MenuCategories.data;
+        return MenuCategories
+    }
+    catch (error) {
+        toast.error("Getting menu categories Failed");
     }
 }

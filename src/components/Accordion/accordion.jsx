@@ -42,10 +42,10 @@ export default function accordion(props) {
         {
           props?.content?.map(item=>(
             <div className="menu-item" key={item.id}>
-              <img src={item.imageUrl} className="accordion-image" />
+              <img src={item.defaultPicture?.url} className="accordion-image" />
               <div className="menu-item__desc">
                 <h3 className="menu-item__name">{item.name}</h3>
-                <p className="menu-item__price">{item.price} RWF</p>
+                <p className="menu-item__price">{item.unitPrice} RWF</p>
               </div>
               {
                 props.isFoundInCart(item) ? 

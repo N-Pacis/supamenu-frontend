@@ -5,9 +5,9 @@ const MenuCategories = ({categories,onAddToCart,isFoundInCart,onRemoveFromCart  
         <>
             {categories.map(category => (
                 <Accordion
-                    key={category.id}
-                    title={category.name}
-                    content={category.menu}
+                    key={category.category.id}
+                    title={category.category.name}
+                    content={category.items}
                     onAddToCart={onAddToCart}
                     onRemoveFromCart={onRemoveFromCart}
                     isFoundInCart={isFoundInCart}
