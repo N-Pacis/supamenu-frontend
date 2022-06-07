@@ -106,3 +106,36 @@ padding: 4% 10% 2% 5% !important;
 .payment-forms{
     padding-top: 10% !important;
 }
+.payment-methods-images{
+    width: 100%;
+    padding: 2% 5% !important;
+    display: flex;
+    flex-direction: column;
+}
+.payment-method-item{
+    margin: 3% 0% !important;
+    background-color: #F8F8FB;
+    border-radius: 9px;
+    display: flex;
+    width: 100%;
+    padding: 2% 3% !important;
+    justify-content: space-between;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+.payment-method-item:hover{
+    background-color: #f0f0f0;
+}
+
+.payment-method-item__image{
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+}
+.payment-method-item__text{
+    width: 70%;
+    margin-left: 15% !important;
+    color: var(--dark);
+    font-size: 14px;
+    margin-top: 7% !important;
+}

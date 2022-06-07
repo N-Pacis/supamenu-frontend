@@ -7,9 +7,13 @@
     padding: 0% 3% !important;
     background-color: transparent;
 }
+.app-logo-link{
+    width: 5% !important;
+    height:90%;
+}
 .app-logo{
-    width: 25%;
-    height:100%;
+    width: 20%;
+    height:90%;
 }
 .app-logo-div{
     width: 80% !important;

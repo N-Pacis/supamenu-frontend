@@ -19,11 +19,13 @@ const Navbar = ({
     return (
         <div className="navbar-div">
             <div className="app-logo-div">
-                <img
-                    src={Logo}
-                    className="app-logo"
-                    draggable={false}
-                />
+                <Link to="/" className="app-logo-link">
+                    <img
+                        src={Logo}
+                        className="app-logo"
+                        draggable={false}
+                    />
+                </Link>
             </div>
 
             <div className="user-options">

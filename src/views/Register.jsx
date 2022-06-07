@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Logo1 from "../assets/logo1.png"
 import Logo2 from "../assets/logo2.png"
-import { showInputError, showFormErrors } from "../helpers/validateInput";
 import { useHistory } from "react-router-dom";
 import { clearMessage } from "../actions/messageAction";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/register.css"
 import { Link } from "react-router-dom";
+import { registerUser } from "../actions/authActions";
 
 const Register = ({ }) => {
     const initialUser = {
-        fullName: "",
-        phoneNumber: "",
+        firstName: "",
+        lastName: "",
+        mobile: "",
         email: "",
         password: "",
     };
 
     const [registerData, setRegisterData] = useState(initialUser);
-    const { isLoading } = useSelector((state) => state.auth);
+    const [loading,setLoading] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const loading = isLoading;
 
 
 
@@ -28,18 +28,18 @@ const Register = ({ }) => {
         var name = e.target.name;
         var value = e.target.value;
         setRegisterData({ ...registerData, [name]: value });
-        showInputError(e.target);
     };
 
     const handleSubmit = (e) => {
+        setLoading(true)
         e.preventDefault();
-        if (!showFormErrors()) {
-            dispatch(login(registerData))
-                .then(() => {
-                    history.push("/dashboard");
-                })
-                .catch((err) => { });
-        }
+        registerUser(registerData)
+            .then((resp) => {
+                setLoading(false)
+                if(resp.success){
+                    history.push("/login");
+                }
+        })
     }
     useEffect(() => {
         dispatch(clearMessage());
@@ -61,18 +61,28 @@ const Register = ({ }) => {
                     <form onSubmit={handleSubmit} noValidate>
                         <div className="input-group">
                             <input
-                                name="fullName"
-                                inputHandler={inputHandler}
+                                name="firstName"
+                                onChange={inputHandler}
                                 type="text"
-                                placeholder="Full Name"
+                                placeholder="First Name"
                                 className="register-input"
                                 required
                             />
                         </div>
                         <div className="input-group">
                             <input
-                                name="phoneNumber"
-                                inputHandler={inputHandler}
+                                name="lastName"
+                                onChange={inputHandler}
+                                type="text"
+                                placeholder="Last Name"
+                                className="register-input"
+                                required
+                            />
+                        </div>
+                        <div className="input-group">
+                            <input
+                                name="mobile"
+                                onChange={inputHandler}
                                 type="text"
                                 placeholder="Phone Number"
                                 className="register-input"
@@ -82,7 +92,7 @@ const Register = ({ }) => {
                         <div className="input-group">
                             <input
                                 name="email"
-                                inputHandler={inputHandler}
+                                onChange={inputHandler}
                                 type="text"
                                 placeholder="Your email"
                                 className="register-input"
@@ -92,7 +102,7 @@ const Register = ({ }) => {
                         <div className="input-group">
                             <input
                                 name="password"
-                                inputHandler={inputHandler}
+                                onChange={inputHandler}
                                 type="password"
                                 placeholder="Password"
                                 className="register-input"
