@@ -50,9 +50,7 @@ export async function fetchById(id) {
     try {
         const url = `/service-providers/${id}`;
 
-        let serviceProviderFromBackend = await axios.get(`${ENDPOINT}${url}`, {
-            headers: authHeader(),
-        });
+        let serviceProviderFromBackend = await axios.get(`${ENDPOINT}${url}`);
         serviceProviderFromBackend = serviceProviderFromBackend.data;
         return serviceProviderFromBackend
     }

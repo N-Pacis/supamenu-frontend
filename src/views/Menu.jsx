@@ -62,13 +62,13 @@ const Menu = ({
         <>
             <div className="app-top-banner">
                 <Navbar />
-                <h2 className="app-title">{serviceProvider.name}</h2>
-                <p className="app-slogan">{serviceProvider.address}</p>
+                <h2 className="app-title">{serviceProvider?.name}</h2>
+                <p className="app-slogan">{serviceProvider?.address}</p>
             </div>
             <div className="app-low-banner">
                 <div className="app-restaurant-image">
                     <img
-                        src={serviceProvider.defaultPic?.url}
+                        src={serviceProvider?.defaultPic?.url}
                         className="app-restaurant-image-img"
                     />
                 </div>

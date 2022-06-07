@@ -12,7 +12,6 @@ const ViewRestaurant = () => {
     
     useEffect(async()=>{
         let provider = await fetchById(id)
-        console.table(provider)
         setServiceProvider(provider)
     },[])
 
@@ -20,12 +19,12 @@ const ViewRestaurant = () => {
         <>
             <div className="app-top-banner">
                 <Navbar />
-                <h2 className="app-title">{serviceProvider?.name}</h2>
-                <p className="app-slogan">{serviceProvider?.address}</p>
-                <img src={serviceProvider?.imageUrl} className="restaurant-image"/>
+                <h2 className="app-title">{serviceProvider.name}</h2>
+                <p className="app-slogan">{serviceProvider.address}</p>
+                <img src={serviceProvider.defaultPic?.url} className="restaurant-image"/>
             </div>
             <div className="app-low-banner-restaurant">
-                <Link to={`/restaurants/${serviceProvider?.id}/menu`} className="restaurant-menu-btn">Checkout Menu</Link>
+                <Link to={`/restaurants/${serviceProvider.id}/menu`} className="restaurant-menu-btn">Checkout Menu</Link>
             </div>
         </>
     );

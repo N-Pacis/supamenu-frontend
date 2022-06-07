@@ -10,19 +10,9 @@ const MomoAirtelPayment = ({paymentMethod}) => {
                 <div className="input-group">
                     <label>Mobile Number</label>
                     <input
-                        name="mobile_number"
+                        name="msisdn"
                         type="text"
                         placeholder="0780754952"
-                        className="payment-input"
-                        required
-                    />
-                </div>
-                <div className="input-group">
-                    <label>Account Holder Name</label>
-                    <input
-                        name="account_holder"
-                        type="text"
-                        placeholder="John Doe"
                         className="payment-input"
                         required
                     />
