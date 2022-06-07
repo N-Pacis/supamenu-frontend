@@ -29,45 +29,6 @@ const Search = ({
         dispatch(fetchServiceProviders())
     },[dispatch])
 
-    // const nearbyRestaurants = [
-    //     {
-    //         "id": "1",
-    //         "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-    //         "name": "Restaurant 1",
-    //         "description": "World,African,Pizzeria,Coffee"
-    //     },
-    //     {
-    //         "id": "2",
-    //         "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-    //         "name": "Restaurant 2",
-    //         "description": "World,African,Pizzeria,Coffee"
-    //     },
-    //     {
-    //         "id": "3",
-    //         "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-    //         "name": "Restaurant 3",
-    //         "description": "World,African,Pizzeria,Coffee"
-    //     },
-    //     {
-    //         "id": "4",
-    //         "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-    //         "name": "Restaurant 4",
-    //         "description": "World,African,Pizzeria,Coffee"
-    //     },
-    //     {
-    //         "id": "5",
-    //         "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-    //         "name": "Restaurant 5",
-    //         "description": "World,African,Pizzeria,Coffee"
-    //     },
-    //     {
-    //         "id": "6",
-    //         "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-    //         "name": "Restaurant 6",
-    //         "description": "World,African,Pizzeria,Coffee"
-    //     },
-    // ]
-
     return (
         <>
             <div className="app-top-banner">
