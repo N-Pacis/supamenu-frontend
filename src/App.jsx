@@ -44,7 +44,7 @@ function PublicRoute({ children, ...rest }) {
         return !sessionStorage.getItem("token") ? (
           children
         ) : (
-          <Redirect to="/dashboard" />
+          <Redirect to="/" />
         );
       }}
     />

@@ -14,7 +14,7 @@ export async function sendMomoPayment(dataToPost) {
       headers: authHeader(),
   });
     toast.success("Payment Initiated Successfully");
-    return { success: true, data: response.data }
+    return { success: true, data: response?.data }
 
   } catch (err) {
     toast.error(err?.response?.data?.apierror.message || "Payment Initiation Failed")
@@ -28,7 +28,7 @@ export async function sendCardPayment(dataToPost) {
     const url = `/payments/card`;
     let response = await axios.post(`${ENDPOINT}${url}`, dataToPost);
     toast.success("Payment Initiated Successfully");
-    return { success: true, data: response.data }
+    return { success: true, data: response?.data }
 
   } catch (err) {
     toast.error(err?.response?.data?.apierror.message || "Payment Initiation Failed")

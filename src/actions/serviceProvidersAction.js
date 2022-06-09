@@ -38,7 +38,7 @@ export function fetchServiceProviders() {
             let serviceProvidersFromBackend = await axios.get(`${ENDPOINT}${url}`, {
                 headers: authHeader(),
             });
-            serviceProvidersFromBackend = serviceProvidersFromBackend.data.content;
+            serviceProvidersFromBackend = serviceProvidersFromBackend?.data.content;
             dispatch(getServiceProvidersSuccess(serviceProvidersFromBackend));
         } catch (error) {
             dispatch(getServiceProvidersFailure());
@@ -51,7 +51,7 @@ export async function fetchById(id) {
         const url = `/service-providers/${id}`;
 
         let serviceProviderFromBackend = await axios.get(`${ENDPOINT}${url}`);
-        serviceProviderFromBackend = serviceProviderFromBackend.data;
+        serviceProviderFromBackend = serviceProviderFromBackend?.data;
         return serviceProviderFromBackend
     }
     catch (error) {
@@ -66,7 +66,7 @@ export async function fetchMenuCategories(id) {
         let MenuCategories = await axios.get(`${ENDPOINT}${url}`, {
             headers: authHeader(),
         });
-        MenuCategories = MenuCategories.data;
+        MenuCategories = MenuCategories?.data;
         return MenuCategories
     }
     catch (error) {

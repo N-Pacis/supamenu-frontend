@@ -49,7 +49,7 @@ export const login = (loginData) => (dispatch) => {
         });
     },
     (error) => {
-      const message = error.response.data.apierror.message
+      const message = error?.response?.data?.apierror?.message
 
       dispatch({
         type: LOGIN_FAIL,
@@ -71,7 +71,7 @@ export async function registerUser(dataToPost) {
       const url = `/auth/client/signup`;
       let response = await axios.post(`${ENDPOINT}${url}`, dataToPost);
       toast.success("Registered Successfully");
-      return { success: true, data: response.data }
+      return { success: true, data: response?.data }
   } catch (err) {
       console.warn(err)
       toast.error(err?.response?.data?.apierror.message || "Registration Failed")

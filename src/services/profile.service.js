@@ -11,8 +11,8 @@ export const getLoginUserProfile = (id) => {
       headers: authHeader()
     })
     .then((res) => {
-      const hashedPayload = encrypt(res.data);
+      const hashedPayload = encrypt(res?.data);
       sessionStorage.setItem("hash", hashedPayload);
-      return res.data;
+      return res?.data;
     });
 };

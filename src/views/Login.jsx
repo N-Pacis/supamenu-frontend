@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/register.css"
 import { Link } from "react-router-dom";
 import { login } from "../actions/authActions";
+import { toast } from "react-toastify";
+
 
 const Login = ({ }) => {
     const initialUser = {
@@ -15,12 +17,9 @@ const Login = ({ }) => {
     };
 
     const [loginData, setLoginData] = useState(initialUser);
-    const { isLoading } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const history = useHistory();
-    const loading = isLoading;
-
-
+    const [loading,setLoading] = useState(false);
 
     const inputHandler = (e) => {
         var name = e.target.name;
@@ -29,12 +28,17 @@ const Login = ({ }) => {
     };
 
     const handleSubmit = (e) => {
+        setLoading(true)
         e.preventDefault();
         dispatch(login(loginData))
             .then(() => {
+                setLoading(false)
                 history.push("/");
             })
-            .catch((err) => { });
+            .catch((err) => { 
+                err != undefined ? toast.error(err) : toast.error("Error Logging In. Please Try Again!")
+                setLoading(false)
+            });
     }
     useEffect(() => {
         dispatch(clearMessage());
