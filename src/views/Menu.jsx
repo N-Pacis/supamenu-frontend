@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import MenuCategories from "../components/Menu/MenuCategories";
 import CartItems from "../components/Menu/CartItems";
 import { connect } from "react-redux";
-import { saveCartItemsFn } from "../actions/cartItemsAction";
+import { saveCartItemsFn, saveRestaurantInfoFn } from "../actions/cartItemsAction";
 import { useParams } from "react-router-dom";
 import { fetchById, fetchMenuCategories } from "../actions/serviceProvidersAction";
 
@@ -20,6 +20,7 @@ const Menu = ({
     useEffect(async()=>{
         let provider = await fetchById(id)
         let categoriesFromBackend = await fetchMenuCategories(id)
+        dispatch(saveRestaurantInfoFn(provider))
         setServiceProvider(provider)
         setCategories(categoriesFromBackend)
     },[])

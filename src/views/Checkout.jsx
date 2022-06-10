@@ -8,7 +8,8 @@ import MobilePayment from "../components/Payment/MobilePayment";
 const Checkout = ({
     dispatch,
     cartItemsArr,
-    order_id
+    order_id,
+    restaurant
 }) => {
     const [activePaymentMethod,setActivePaymentMethod] = useState('credit-card')
 
@@ -19,12 +20,9 @@ const Checkout = ({
         }
     }, [cartItemsArr])
 
-    const restaurant = {
-        "id": "1",
-        "imageUrl": "https://img.freepik.com/free-photo/glass-papaya-juice-put-white-marble-floor_1150-28077.jpg?size=626&ext=jpg",
-        "name": "Restaurant 1",
-        "description": "World,African,Pizzeria,Coffee"
-    }
+    useEffect(()=>{
+        console.warn(restaurant)
+    },[])
 
     const toggleActivePaymentMethod = (paymentMethod) => {
         setActivePaymentMethod(paymentMethod)
@@ -36,13 +34,13 @@ const Checkout = ({
         <>
             <div className="app-top-banner-checkout">
                 <Navbar />
-                <h2 className="app-title">{restaurant.name}</h2>
-                <p className="app-slogan">{restaurant.description}</p>
+                <h2 className="app-title">{restaurant?.name}</h2>
+                <p className="app-slogan">{restaurant?.address}</p>
             </div>
             <div className="app-low-banner">
                 <div className="app-restaurant-image">
                     <img
-                        src={restaurant.imageUrl}
+                        src={restaurant?.defaultPic?.url}
                         className="app-restaurant-image-img"
                     />
                 </div>
@@ -79,7 +77,8 @@ const Checkout = ({
 };
 const mapStateToProps = (state) => ({
     cartItemsArr: state.cart.cartItems,
-    order_id: state.cart.order_id
+    order_id: state.cart.order_id,
+    restaurant: state.cart.restaurant
 });
 
 export default connect(mapStateToProps)(Checkout);
