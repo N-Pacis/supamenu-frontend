@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/register.css"
 import { Link } from "react-router-dom";
 import { login } from "../actions/authActions";
-import { toast } from "react-toastify";
 
 
 const Login = ({ }) => {
@@ -36,7 +35,6 @@ const Login = ({ }) => {
                 history.push("/");
             })
             .catch((err) => { 
-                err != undefined ? toast.error(err) : toast.error("Error Logging In. Please Try Again!")
                 setLoading(false)
             });
     }

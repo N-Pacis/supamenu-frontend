@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supamenu Invoice</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap');
+        body{
+            padding: 0% 10% !important;
+            margin: 0 !important;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px !important;
+            overflow-x: hidden;
+        }
+        .invoice-title{
+            margin-top: -3% !important;
+            margin-bottom: -5% !important;
+            display: flex;
+            justify-content: space-between;
+        }
+        .invoice-title>h2{
+            font-family: 'Baloo 2', cursive !important;
+            color: rgb(31, 37, 56) !important;
+            font-size: 50px;
+        }
+        .invoice-title>p{
+            font-family: 'Baloo 2', cursive !important;
+            color: rgb(31, 37, 56) !important;
+            font-size: 50px;
+        }
+        .invoice-title>p>span{
+            font-family: "Poppins", sans-serif !important;
+            font-size: 40px !important;
+            color:rgb(116, 69, 116) !important;
+        }
+        .invoice-user-information{
+            display: flex;
+            justify-content: space-between;
+        }
+        .invoice-user-information>div>h2{
+            color:rgb(94, 97, 109) !important;
+        }
+        .invoice-user-information>div>.item-title{
+            font-weight: bold;
+            color: rgb(31, 37, 56) !important;
+            font-size: 18px !important;
+        }
+        .invoice-payment-information{
+            width: 70%;
+            padding-left: 25% !important;
+            margin: 0% 2% !important;
+            color:rgb(70, 71, 78) !important;
+            padding-bottom: 2% !important;
+            border-bottom: 1px solid rgb(31, 37, 56);
+            z-index: 1;
+        }
+        .invoice-payment-information>p>span{
+            font-weight: bold;
+            font-size: 20px !important;
+            color: rgb(31, 37, 56) !important;
+        }
+        table{
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 70%;
+            border-bottom: 2px solid rgb(31, 37, 56);
+        }
+        th,td{
+            padding: 0.8% 0% !important;
+        }
+        th,td{
+            text-align: left;
+        }
+        .footer-information__item{
+            display: flex;
+            justify-content: space-between;   
+            margin-bottom: -4% !important;
+        }
+        .table-footer-information{
+            width: 70%;
+            padding-bottom: 2% !important;
+            border-bottom: 1px solid rgb(31, 37, 56);
+        }
+        .total-amount-div{
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .total{
+            color: #F7941D;
+            font-size: 24px;
+        }
+        .footer-note>h3{
+            color:rgb(116, 116, 116) !important;
+            
+        }
+        .footer-note>p{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .footer-note>div{
+            background-color:rgb(238, 238, 238);
+            width: 70%;
+            padding: 0.2% 2% !important;
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer-note>div>p{
+            font-weight: 600;
+            color:rgb(126, 126, 126);
+        }
+        .footer-note>div>div>p>span{
+            font-family: 'Baloo 2', cursive !important;
+            color: rgb(62, 67, 82);
+            font-weight: bold;
+        }
+        .web-info{
+            display: flex;
+            justify-content: space-between;
+        }
+        .web-info>a,.web-info>span{
+            color:rgb(94, 97, 109);
+            text-decoration: none;
+        }
+        .footer-image{
+            width: 29%;
+            height: 60px;
+        }
+        .footer{
+            padding: 2% 10% !important;
+        }
+        .main-div{
+            margin: 5% 0% !important;
+            box-shadow: 2px 2px 12px #ccc;
+            border-top: 10px solid #F7941D;
+            padding: 2% 3% !important;
+        }
+        </style>
+</head>
+<body>
+    <div class="main-div">
+
+        <div class="invoice-title">
+            <h2>Invoice</h2>
+            <p><span>N<sup>o</sup></span>261</p>
+        </div>
+        <div class="invoice-user-information">
+            <div class="invoice-user-information__item">
+                <h2>TO:</h2>
+                <p class="item-title">Jacques Kagabo</p>
+                <p>0788345678</p>
+                <p>jacques.kagabo@gmail.com</p>
+            </div>
+            <div class="invoice-user-information__item">
+                <h2>FROM:</h2>
+                <p class="item-title">PMG INTERNATIONAL LTD</p>
+                <p>Kigali, Kacyiru</p>
+                <p>0788432765</p>
+            </div>
+            <div class="invoice-user-information__item">
+                <h2>INFO:</h2>
+                <p class="item-title">Amount: RWF 7,080.00</p>
+                <p>Date: 27/03/2022</p>
+            </div>
+        </div>
+        <div class="invoice-payment-information">
+            <p>Restaurant: <span>Choose Kigali</span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ITEM DESCRIPTION</th>
+                        <th>QTY</th>
+                        <th>RATE</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Item Name
+                        </td>
+                        <td>
+                            01
+                        </td>
+                        <td>
+                            3,000.00
+                        </td>
+                        <td>
+                            RWF 3,000.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Item Name
+                        </td>
+                        <td>
+                            01
+                        </td>
+                        <td>
+                            3,000.00
+                        </td>
+                        <td>
+                            RWF 3,000.00
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-footer-information">
+                <div class="footer-information__item">
+                    <p>Sub Total</p>
+                    <h3>RWF 6,000.00</h3>
+                </div>
+                <div class="footer-information__item">
+                    <p>VAT(18%)</p>
+                    <h3>RWF 1,080.00</h3>
+                </div>
+            </div>
+            <div class="total-amount-div">
+                <p>Total (RWF)</p>
+                <h3 class="total">RWF 7,080.00</h3>
+            </div>
+            <div class="footer-note">
+                <h3>Note</h3>
+                <p>Thanks for the business.</p>
+                <div class="payment-info">
+                    <p>Payment Details</p>
+                    <div>
+                        <p><span>Mobile Money: </span>0788345678</p>
+                        <p><span>REF: </span>1234567890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <img src="https://res.cloudinary.com/pacis/image/upload/v1654863157/logo_we6sod.jpg" class="footer-image" draggable="false">
+            <div class="web-info">
+                <a href="https://supamenu.rw/">www.supamenu.rw</a>
+                <a href="mailto:contact@supamenu.rw">contact@supamenu.rw</a>
+                <span>07884327654</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

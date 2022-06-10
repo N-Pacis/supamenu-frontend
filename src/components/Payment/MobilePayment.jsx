@@ -4,17 +4,19 @@ import AirtelMoney from "../../assets/payment/airtel.png"
 import Momo from "../../assets/payment/momo.png"
 import Cash from "../../assets/payment/cash.png"
 import MomoAirtelPayment from "./MomoAirtelPayment";
+import CashPayment from "./CashPayment";
 
-const MobilePayment = ({ }) => {
+const MobilePayment = ({order}) => {
     const [loading,setLoading] = useState(false)
     const [activeTab,SetActiveTab] = useState('payment-methods')
     
     const toggleActiveTab = (tab) => {
         SetActiveTab(tab)
     }
+
     useEffect(()=>{
-        console.log(activeTab)
-    },[activeTab])
+        console.warn("Order "+order)
+    },[])
     return (
         <>
             {
@@ -47,6 +49,13 @@ const MobilePayment = ({ }) => {
                 (activeTab == 'momo' || activeTab == 'airtel') && 
                 <MomoAirtelPayment 
                     paymentMethod={activeTab}
+                    orderInfo={order}
+                />
+            }
+            {
+                (activeTab == 'cash') && 
+                <CashPayment 
+                    orderInfo={order}
                 />
             }
         </>

@@ -138,3 +138,14 @@
   .checkout-btn:hover{
     background-color: #e78a17 !important;
   }
+
+.order-types{
+  margin: 3% 0% 5% 24%!important;
+  width: 70% !important;
+}
+
+.select-placeholder-text {
+  font-size: 14px;
+  padding-left: 3% !important;
+  color: #bab8b8;
+}

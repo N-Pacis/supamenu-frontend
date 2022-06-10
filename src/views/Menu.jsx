@@ -32,7 +32,7 @@ const Menu = ({
         }
     }
     const onRemoveFromCartFn = (item) => {
-        cartItemsArr.some((element, index) => {
+        cartItemsArr?.some((element, index) => {
             if (element.id == item.id) {
                 let arr = [...cartItemsArr]
                 arr.splice(index, 1)
@@ -42,7 +42,7 @@ const Menu = ({
     }
 
     const onUpdateCartFn = (item, quantity) => {
-        cartItemsArr.some((element, index) => {
+        cartItemsArr?.some((element, index) => {
             if (element.id == item.id) {
                 let arrCheckout = [...cartItemsArr]
                 if (quantity <= 0) {
@@ -54,7 +54,7 @@ const Menu = ({
         })
     }
 
-    const isFoundInCart = (item) => cartItemsArr.some(element => {
+    const isFoundInCart = (item) => cartItemsArr?.some(element => {
         if (element.id == item.id) return true;
     })
 

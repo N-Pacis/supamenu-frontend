@@ -73,7 +73,6 @@ export async function registerUser(dataToPost) {
       toast.success("Registered Successfully");
       return { success: true, data: response?.data }
   } catch (err) {
-      console.warn(err)
       toast.error(err?.response?.data?.apierror.message || "Registration Failed")
       return { success: false, err }
   }

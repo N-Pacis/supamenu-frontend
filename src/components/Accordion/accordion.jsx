@@ -6,9 +6,6 @@ export default function accordion(props) {
   const [active, setActive] = useState(false);
   const content = useRef(null);
   const [height, setHeight] = useState("0px");
-  useEffect(()=>{
-    console.table(props.content)
-  },[])
   function toggleAccordion() {
     setActive(!active);
     setHeight(active ? "0px" : `${content.current.scrollHeight}px`);

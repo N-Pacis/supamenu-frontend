@@ -30,8 +30,8 @@ export const getServiceProvidersFailure = () => ({
 export function fetchServiceProviders() {
     return async (dispatch, getState) => {
         dispatch(getServiceProviders());
-        let page = 0;
-        let size = 6;
+        let page = 1;
+        let size = 7;
         try {
             const url = `/service-providers?page=${page}&size=${size}`;
 

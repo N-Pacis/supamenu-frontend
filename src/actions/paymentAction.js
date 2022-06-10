@@ -22,6 +22,22 @@ export async function sendMomoPayment(dataToPost) {
   }
 }
 
+export async function sendPaymentByCash(dataToPost) {
+  try {
+    dataToPost.regChannel = "WEB"
+    const url = `/payments/cash`;
+    let response = await axios.post(`${ENDPOINT}${url}`, dataToPost,{
+      headers: authHeader(),
+  });
+    toast.success("Successfull");
+    return {   success: true, data: response?.data }
+
+  } catch (err) {
+    toast.error(err?.response?.data?.apierror.message || "Failure")
+    return { sucess: false, err };
+  }
+}
+
 export async function sendCardPayment(dataToPost) {
   try {
     dataToPost.regChannel = "WEB"

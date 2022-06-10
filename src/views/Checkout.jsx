@@ -7,7 +7,8 @@ import CreditCardPayment from "../components/Payment/CreditCardPayment";
 import MobilePayment from "../components/Payment/MobilePayment";
 const Checkout = ({
     dispatch,
-    cartItemsArr
+    cartItemsArr,
+    order_id
 }) => {
     const [activePaymentMethod,setActivePaymentMethod] = useState('credit-card')
 
@@ -65,7 +66,9 @@ const Checkout = ({
                                 activePaymentMethod == 'credit-card' ? 
                                     <CreditCardPayment />
                                 :
-                                <MobilePayment />
+                                <MobilePayment 
+                                    order={order_id}
+                                />
                             }
                         </div>
                     </div>
@@ -75,7 +78,8 @@ const Checkout = ({
     );
 };
 const mapStateToProps = (state) => ({
-    cartItemsArr: state.cart.cartItems
+    cartItemsArr: state.cart.cartItems,
+    order_id: state.cart.order_id
 });
 
 export default connect(mapStateToProps)(Checkout);
