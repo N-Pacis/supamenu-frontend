@@ -21,8 +21,8 @@ const Landing = ({}) => {
       },
       {
         "id": 3,
-        "title": "Step 3",
-        "description": "Pay",
+        "title": "Step 3 ",
+        "description": "Payment",
         "icon":"pay"
     }
   ]
