@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../../styles/navbar.css";
 import Logo from "../../assets/Navbar/logo.png";
-import { FaSearch, FaBell,FaBars } from "react-icons/fa";
+import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { logout } from "../../actions/authActions";
 
 const Navbar = ({
     dispatch,
@@ -12,21 +14,28 @@ const Navbar = ({
 }) => {
     const { user } = useSelector((state) => state.auth);
     let { firstName = "", lastName = "" } = user || {};
-    const [toggleSidebar,setToggleSidebar] = useState(false)
-    
+    const [toggleSidebar, setToggleSidebar] = useState(false)
+
     const avatar = `https://ui-avatars.com/api/?name=${firstName}&bold=true`
 
-    const toggleSidebarFn = ()=>{
+    const toggleSidebarFn = () => {
         setToggleSidebar(!toggleSidebar)
+    }
+    
+    const history = useHistory();
+
+    const logoutFn = () => {
+        dispatch(logout());
+        history.push("/login");
     }
 
     return (
         <div className="navbar-div">
-            <FaBars 
+            <FaBars
                 className="burger-icon"
                 onClick={toggleSidebarFn}
             />
-            <input type="checkbox" name="checkbox" id="check" hidden/>
+            <input type="checkbox" name="checkbox" id="check" hidden />
             <div className="app-logo-div">
                 <Link to="/" className="app-logo-link">
                     <img
@@ -47,10 +56,15 @@ const Navbar = ({
                 {
                     isLoggedIn && (
                         <div className="user-profile-information">
-                            <p className="username">{toggleSidebar ? 'Welcome '+ firstName: firstName }</p>
+                            <p className="username">{toggleSidebar ? 'Welcome ' + firstName : firstName}</p>
                             <img
                                 src={avatar}
                                 className="user-avatar"
+                            />
+                            <FaSignOutAlt
+                                className="logout-icon"
+                                title="Logout"
+                                onClick={logoutFn}
                             />
                         </div>
                     )
@@ -63,6 +77,6 @@ const Navbar = ({
 const mapStateToProps = (state) => ({
     message: state.message.message,
     isLoggedIn: state.auth.isLoggedIn
-  });
-  
+});
+
 export default connect(mapStateToProps)(Navbar);
