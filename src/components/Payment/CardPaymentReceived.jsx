@@ -18,9 +18,7 @@ const CardPaymentReceived = ({
     const search = useLocation().search;
 
     useEffect(() => {
-        if(!order_id || order_id == null || order_id == undefined){
-            history.push("/search")
-        }
+        console.warn(restaurant)
         const status = new URLSearchParams(search).get('status')
         const transaction_id = new URLSearchParams(search).get('transaction_id')
         const tx_ref = new URLSearchParams(search).get('tx_ref')

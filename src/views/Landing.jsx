@@ -41,13 +41,7 @@ const Landing = ({}) => {
                 </Link>
             </div> 
         </div>
-        <div className="app-low-banner">
-            <div className="app-low-banner-background">
-               <img 
-                    src={cardBackground}
-                    className="card-background-image"
-               /> 
-            </div>
+        <div className="app-low-banner-background">
             <div className="cards-holder">
                 {
                     cards.map(card => (

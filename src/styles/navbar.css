@@ -71,6 +71,7 @@
     }
     .app-logo{
         width: 70%;
+        object-fit: contain;
     }
     .burger-icon{
         display: block;
@@ -110,5 +111,62 @@
     }
     .username{
         margin-left: 20% !important;
+    }
+}
+
+
+@media only screen and (min-width:769px) and (max-width:1000px){
+    .search-text{
+        font-size: 17px !important;
+    }
+    .app-logo-div{
+        margin-left: 20% !important;
+    }
+    .app-logo{
+        width: 70%;
+        object-fit: contain;
+    }
+    .burger-icon{
+        display: block;
+    }
+    .user-options{
+        position: fixed;
+        background-color: rgb(26, 26, 26);
+        width: 100%;
+        height: 100vh;
+        left: -100%;
+        padding: 15% 0% 90% !important;
+        top: 70px;
+        transition: all .5s;
+        text-align: center;
+        font-size: 25px !important;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+    }
+    .separator,.bell-icon,.user-avatar{
+        display: none;
+    }
+    .user-options-active{
+        left:0% !important;
+    }
+    .user-profile-information{
+        width: 100%;
+    }
+    .user-profile-information>.username{
+        font-weight: bold;
+        font-size: 22px;
+    }
+    .navigation-item{
+        text-align: left !important;
+        margin-left: 10% !important;
+        font-size: 20px !important;
+        margin-bottom: 2% !important;
+    }
+    .username{
+        margin-left: 30% !important;
+        margin-bottom: 5% !important;
     }
 }

@@ -192,3 +192,29 @@ padding: 4% 10% 2% 5% !important;
 .go-back-btn:hover{
       background-color: #e78a17 !important;
     }
+
+    @media only screen and (max-width: 768px){
+        .payment-received-container{
+            width: 100% !important;
+            left:0% !important;
+            padding: 0% 10% !important;
+        }
+        .go-back-btn{
+            width: 90% !important;
+            margin: 5% 4% !important;
+            padding: 3% 10% !important;
+        }
+    }
+    
+    @media only screen and (min-width: 769px) and (max-width:1000px){
+        .payment-received-container{
+            width: 80% !important;
+            left:10% !important;
+            padding: 0% 10% !important;
+        }
+        .go-back-btn{
+            width: 90% !important;
+            margin: 5% 4% !important;
+            padding: 3% 10% !important;
+        }
+    }

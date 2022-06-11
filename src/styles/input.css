@@ -54,3 +54,11 @@ label {
     }
     
   }
+
+  @media only screen and (min-width:769px) and (max-width:1000px){
+    .input-field{
+      padding:1.5% 8% !important;
+      font-size: 17px !important;
+    }
+    
+  }
