@@ -139,3 +139,56 @@ padding: 4% 10% 2% 5% !important;
     font-size: 14px;
     margin-top: 7% !important;
 }
+.payment-received-container{
+    position:absolute;
+    top:230px;
+    left: 30% !important;
+    width: 70%;
+    padding: 0% 20% !important;
+}
+.payment-received{
+    background-color: var(--pureWhite);
+    border-radius: 10px;
+    box-shadow: 0px 2px 27px rgba(184, 184, 184, 0.26);
+    width: 100%;
+    height: auto;
+    padding-bottom: 5% !important;
+    display: flex;
+    flex-direction: column;
+}
+.payment-received-icon{
+    padding: 10% 40% 3% !important;
+}
+.payment-received-icon__image{
+    width: 100% !important;
+    object-fit: cover;
+}
+
+.payment-received-text{
+    text-align: center;
+    font-weight: bold;
+    color:var(--dark);
+    font-size: 18px;
+}
+.failure-text{
+    color: rgb(189, 27, 27);
+}
+.success-text{
+    color: rgb(73, 156, 73);
+
+}
+.go-back-btn{
+      width: 70% !important;
+      margin: 5% 15% !important;
+      padding: 3% 5% !important;
+      background-color: var(--orange) !important;
+      color: var(--pureWhite);
+      font-size: 16px;
+      border-radius: 5px;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+    }
+.go-back-btn:hover{
+      background-color: #e78a17 !important;
+    }

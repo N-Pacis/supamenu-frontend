@@ -1,54 +1,29 @@
 import React, { useState } from "react";
+import { initiateCardPayment } from "../../actions/paymentAction";
 import "../../styles/landing.css";
 import "../../styles/register.css"
-const CreditCardPayment = ({ }) => {
+const CreditCardPayment = ({order}) => {
     const [loading,setLoading] = useState(false)
+    
+    const handleSubmit = (e) => {
+        setLoading(true)
+        e.preventDefault();
+        let formData = {
+            orderInfo: order,  
+        }
+        initiateCardPayment(formData)
+            .then((res) => {
+                setLoading(false)
+                window.location.href = res.data.link
+            })
+            .catch((err) => {
+                setLoading(false)
+            });
+    }
 
     return (
         <>
-            <form noValidate>
-                <div className="input-group">
-                    <label>Card Number</label>
-                    <input
-                        name="card_number"
-                        type="text"
-                        placeholder="5261 4141 0151 8472"
-                        className="payment-input"
-                        required
-                    />
-                </div>
-                <div className="input-group">
-                    <label>Card Holder Name</label>
-                    <input
-                        name="card_holder"
-                        type="text"
-                        placeholder="John Doe"
-                        className="payment-input"
-                        required
-                    />
-                </div>
-                <div className="input-group-div">
-                    <div className="input-group">
-                        <label>Expiry Date</label>
-                        <input
-                            name="card_number"
-                            type="text"
-                            placeholder="06/2024"
-                            className="payment-input"
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label>CVV / CVC</label>
-                        <input
-                            name="card_holder"
-                            type="text"
-                            placeholder="915"
-                            className="payment-input"
-                            required
-                        />
-                    </div>
-                </div>
+            <form onSubmit={handleSubmit} noValidate>
                 <div className="mt-8 text-center">
                     <button
                         className="pay-btn"

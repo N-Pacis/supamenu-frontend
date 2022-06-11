@@ -38,16 +38,33 @@ export async function sendPaymentByCash(dataToPost) {
   }
 }
 
-export async function sendCardPayment(dataToPost) {
+export async function initiateCardPayment(dataToPost) {
   try {
     dataToPost.regChannel = "WEB"
     const url = `/payments/card`;
-    let response = await axios.post(`${ENDPOINT}${url}`, dataToPost);
+    let response = await axios.post(`${ENDPOINT}${url}`, dataToPost,{
+      headers: authHeader()
+    });
     toast.success("Payment Initiated Successfully");
     return { success: true, data: response?.data }
 
   } catch (err) {
     toast.error(err?.response?.data?.apierror.message || "Payment Initiation Failed")
+    return { sucess: false, err };
+  }
+}
+
+export async function finalizeCardPayment(data) {
+  try {
+    const url = `/flutterwave/initiated?status=${data.status}&transaction_id=${data.transaction_id}&tx_ref=${data.tx_ref}`;
+    let response = await axios.get(`${ENDPOINT}${url}`,{
+      headers: authHeader()
+    });
+    toast.success("Success");
+    return { success: true, data: response?.data }
+
+  } catch (err) {
+    toast.error(err?.response?.data?.apierror.message || "Failure")
     return { sucess: false, err };
   }
 }

@@ -32,7 +32,7 @@ const Login = ({ }) => {
         dispatch(login(loginData))
             .then(() => {
                 setLoading(false)
-                history.push("/");
+                history.push("/search");
             })
             .catch((err) => { 
                 setLoading(false)

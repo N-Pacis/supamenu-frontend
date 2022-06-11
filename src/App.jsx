@@ -16,6 +16,7 @@ import Login from "./views/Login";
 import Register from './views/Register';
 import ViewRestaurant from "./views/ViewRestaurant";
 import Menu from "./views/Menu";
+import CardPaymentReceived from "./components/Payment/CardPaymentReceived";
 import Checkout from "./views/Checkout";
 
 function PrivateRoute({ children, ...rest }) {
@@ -75,11 +76,14 @@ export default function App() {
         <Route exact path="/restaurants/:id">
           <ViewRestaurant />
         </Route>
-        <Route exact path="/restaurants/:id/menu">
+        <PrivateRoute exact path="/restaurants/:id/menu">
           <Menu />
-        </Route>
-        <Route exact path="/checkout">
+        </PrivateRoute>
+        <PrivateRoute exact path="/checkout">
           <Checkout />
+        </PrivateRoute>
+        <Route exact path="/payment-initiated">
+          <CardPaymentReceived />
         </Route>
       </Switch>
     </Router>

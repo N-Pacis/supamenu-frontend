@@ -19,11 +19,6 @@ const Checkout = ({
             history.push('/')
         }
     }, [cartItemsArr])
-
-    useEffect(()=>{
-        console.warn(restaurant)
-    },[])
-
     const toggleActivePaymentMethod = (paymentMethod) => {
         setActivePaymentMethod(paymentMethod)
     }
@@ -62,7 +57,9 @@ const Checkout = ({
                         <div className="payment-forms">
                             {
                                 activePaymentMethod == 'credit-card' ? 
-                                    <CreditCardPayment />
+                                    <CreditCardPayment 
+                                        order={order_id}
+                                    />
                                 :
                                 <MobilePayment 
                                     order={order_id}
