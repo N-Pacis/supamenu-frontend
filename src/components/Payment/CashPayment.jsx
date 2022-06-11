@@ -15,7 +15,7 @@ const CashPayment = ({orderInfo}) => {
         sendPaymentByCash(formData)
             .then((res) => {
                 setLoading(false)
-                history.push("/")
+                history.push("/search")
             })
             .catch((err) => {
                 setLoading(false)

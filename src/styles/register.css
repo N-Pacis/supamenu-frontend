@@ -142,3 +142,18 @@
       .pay-btn:hover{
         background-color: #1ac977  !important;
       }
+
+      @media only screen and (max-width: 768px) {
+          .logo-div{
+              display: none;
+          }
+          .form-container{
+              width: 100% !important;
+              margin: 3% 2% !important;
+          }
+          .form-container-logo{
+              width: 50%;
+              object-fit: contain;
+              height: 35px;
+          }
+      }

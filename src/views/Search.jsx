@@ -6,9 +6,9 @@ import Input from "../components/Input";
 import { FaSearch } from "react-icons/fa";
 import RestaurantCard from "../components/Search/RestaurantCard";
 import { connect } from "react-redux";
-import {fetchServiceProviders} from "../actions/serviceProvidersAction"
+import { fetchServiceProviders, searchServiceProviders } from "../actions/serviceProvidersAction"
 
-const Search = ({ 
+const Search = ({
     dispatch,
     serviceProvidersArr,
     loading
@@ -22,12 +22,18 @@ const Search = ({
     };
 
     useEffect(() => {
-        searchData != '' ? setIsSeaching(true) : setIsSeaching(false)
+        if (searchData != '') {
+            dispatch(searchServiceProviders(searchData))
+            setIsSeaching(true)
+        }
+        else {
+            setIsSeaching(false)
+        }
     }, [searchData])
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchServiceProviders())
-    },[dispatch])
+    }, [dispatch])
 
     return (
         <>
@@ -43,41 +49,39 @@ const Search = ({
                         name="search"
                         inputHandler={inputHandler}
                         placeholder="Search"
+                        className="search-input"
                     ></Input>
                 </div>
             </div>
             <div className="app-low-banner">
                 {
-                    isSearching ?
-                        <div className="search-result-container">
+
+                    <div className="nearby-restaurants-container">
+                        <h1 className="nearby-title">Nearby Restaurants</h1>
+                        <div className="nearby-restaurants-card-holder">
+                            {
+                                serviceProvidersArr.map(restaurant => (
+                                    <RestaurantCard
+                                        key={restaurant.id}
+                                        imageUrl={restaurant.defaultPic?.url}
+                                        title={restaurant.name}
+                                        description={restaurant.address}
+                                        id={restaurant.id}
+                                    />
+                                ))
+                            }
                         </div>
-                        :
-                        <div className="nearby-restaurants-container">
-                            <h1 className="nearby-title">Nearby Restaurants</h1>
-                            <div className="nearby-restaurants-card-holder">
-                                {
-                                    serviceProvidersArr.map(restaurant => (
-                                        <RestaurantCard
-                                            key={restaurant.id}
-                                            imageUrl={restaurant.defaultPic?.url}
-                                            title={restaurant.name}
-                                            description={restaurant.address}
-                                            id={restaurant.id}
-                                        />
-                                    ))
-                                }
-                            </div>
-                        </div>
+                    </div>
                 }
             </div>
         </>
     );
 };
 const mapStateToProps = (state) => {
-    return  ({
-    serviceProvidersArr: state.serviceProv.serviceProviders,
-    loading: state.serviceProv.loading,
-  })
+    return ({
+        serviceProvidersArr: state.serviceProv.serviceProviders,
+        loading: state.serviceProv.loading,
+    })
 };
-  
+
 export default connect(mapStateToProps)(Search);

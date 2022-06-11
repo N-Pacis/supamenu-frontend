@@ -12,7 +12,7 @@
     height:90%;
 }
 .app-logo{
-    width: 20%;
+    width: 25%;
     height:90%;
 }
 .app-logo-div{
@@ -22,8 +22,8 @@
 
 .user-options{
     display: flex;
-    width: 30%;
-    justify-content: space-between;
+    width: 50%;
+    justify-content: space-evenly;
 }
 .search-icon,.bell-icon{
     font-size: 20px;
@@ -44,5 +44,71 @@
     border-radius: 50%;
     object-fit: fill;
     cursor: pointer;
-    margin-top: -1% !important;
+    margin-left: 5% !important;
+    margin-top: -5% !important;
+}
+.burger-icon{
+    display: none;
+    color: var(--pureWhite) !important;
+    font-size: 30px;
+}
+.search-text{
+    font-size: 15px;
+    color: var(--white);
+}
+.user-profile-information{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+@media only screen and (max-width:768px){
+    .search-text{
+        font-size: 17px !important;
+    }
+    .app-logo-div{
+        margin-left: 20% !important;
+    }
+    .app-logo{
+        width: 70%;
+    }
+    .burger-icon{
+        display: block;
+    }
+    .user-options{
+        position: fixed;
+        background-color: rgb(26, 26, 26);
+        width: 100%;
+        height: 100vh;
+        left: -100%;
+        padding: 2% 0% 100% !important;
+        top: 50px;
+        transition: all .5s;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+    }
+    .separator,.bell-icon,.user-avatar{
+        display: none;
+    }
+    .user-options-active{
+        left:0% !important;
+    }
+    .user-profile-information{
+        width: 100%;
+    }
+    .user-profile-information>.username{
+        font-weight: bold;
+        font-size: 22px;
+    }
+    .navigation-item{
+        text-align: left !important;
+        margin-left: 10% !important;
+    }
+    .username{
+        margin-left: 20% !important;
+    }
 }

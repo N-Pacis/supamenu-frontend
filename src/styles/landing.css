@@ -33,6 +33,9 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.register-landing-btn:hover{
+    background-color: dodgerblue !important;
+}
 
 .login-landing-btn{
     padding: 1% 5% !important;
@@ -127,4 +130,47 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+@media only screen and (max-width:768px){
+    .app-title{
+        text-align: left !important;
+        font-size: 18px !important;
+    }
+    .app-slogan{
+        font-size: 16px !important;
+        text-align: left !important;
+    }
+    .account-btns{
+        width: 100%;
+        margin-left: 0% !important;
+        flex-direction: column;
+    }
+    .register-landing-btn,.login-landing-btn{
+        margin: 2% 10%!important;
+        padding: 2% 5% !important;
+    }
+    .app-low-banner-background{
+        min-height: 70vh !important;
+    }
+    .app-low-banner-background>img{
+        object-fit: cover !important;
+    }
+    .cards-holder{
+        flex-direction: column !important;
+    }
+    .card-div{
+        width: 100% !important;
+        margin: 2% 0% !important;
+    }
+    .card-icon{
+        margin-top: 5% !important;
+        font-size: 31px !important;
+    }
+    .card-title{
+        font-size: 20px;
+    }
+    .card-description{
+        font-size: 16px;
+    }
 }

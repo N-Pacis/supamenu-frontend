@@ -19,7 +19,7 @@ const CardPaymentReceived = ({
 
     useEffect(() => {
         if(!order_id || order_id == null || order_id == undefined){
-            history.push("/")
+            history.push("/search")
         }
         const status = new URLSearchParams(search).get('status')
         const transaction_id = new URLSearchParams(search).get('transaction_id')
@@ -30,7 +30,7 @@ const CardPaymentReceived = ({
             transaction_id
         }
         if(!status || !transaction_id || !tx_ref || status == null || status == undefined || tx_ref == null || tx_ref == undefined){
-            history.push("/")
+            history.push("/search")
         }
         else{
             finalizeCardPayment(obj)

@@ -46,6 +46,25 @@ export function fetchServiceProviders() {
     };
 }
 
+export function searchServiceProviders(keyword) {
+    return async (dispatch, getState) => {
+        dispatch(getServiceProviders());
+        let page = 0;
+        let size = 7;
+        try {
+            const url = `/service-providers/search/keyword/${keyword}?page=${page}&size=${size}`;
+
+            let serviceProvidersFromBackend = await axios.get(`${ENDPOINT}${url}`, {
+                headers: authHeader(),
+            });
+            serviceProvidersFromBackend = serviceProvidersFromBackend?.data.content;
+            dispatch(getServiceProvidersSuccess(serviceProvidersFromBackend));
+        } catch (error) {
+            dispatch(getServiceProvidersFailure());
+        }
+    };
+}
+
 export async function fetchById(id) {
     try {
         const url = `/service-providers/${id}`;
