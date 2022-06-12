@@ -16,7 +16,7 @@ const ViewRestaurant = () => {
         setIsLoading(true)
         let provider = await fetchById(id)
         setServiceProvider(provider)
-        // setIsLoading(false)
+        setIsLoading(false)
     }, [])
 
     return (
