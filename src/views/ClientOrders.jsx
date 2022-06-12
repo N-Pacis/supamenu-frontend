@@ -8,7 +8,8 @@ import { fetchOrders } from "../actions/orderAction";
 import { useSelector } from "react-redux";
 import authHeader from "../services/auth-header";
 import axios from 'axios';
-import { formatDate,formatTime } from "../utils/format";
+import { formatDate, formatTime } from "../utils/format";
+import { saveAs } from 'file-saver'
 
 export default function ClientOrders({ }) {
     const [loading, setLoading] = useState(false)
@@ -37,28 +38,6 @@ export default function ClientOrders({ }) {
         setLoading(false)
     }, [])
 
-    const ENDPOINT = import.meta.env.VITE_REACT_APP_BASE_API_URL;
-
-    const downloadHandler = (data) => {
-        let downloadUrl = `${ENDPOINT}/invoices/order/${data.id}`
-
-        axios.get(downloadUrl, {
-            headers: authHeader()
-        })
-            .then((response) => response.blob())
-            .then((blob) => {
-                // Create blob link to download
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                const invoiceFileName = `Invoice-${data.serviceProvider?.name}-${data.id}.pdf`
-                link.href = url;
-                link.setAttribute("download", invoiceFileName);
-                document.body.appendChild(link);
-                link.click();
-                setDownloadExcel(false)
-                link.parentNode.removeChild(link);
-            });
-    }
 
     const handleStatusClassnames = (status) => {
         switch (status) {
@@ -111,7 +90,6 @@ export default function ClientOrders({ }) {
             {renderTable({
                 tableData: orders.content,
                 loading,
-                downloadHandler,
                 handleStatusClassnames,
                 handleNames
             })}
@@ -132,7 +110,6 @@ export default function ClientOrders({ }) {
 const renderTable = ({
     tableData = [],
     loading,
-    downloadHandler,
     handleStatusClassnames,
     handleNames
 }) => {
@@ -180,12 +157,12 @@ const renderTable = ({
                                     {
                                         (tr.status == 'PLACED' || tr.status == 'PACKAGING' || tr.status == 'SHIPPING' || tr.status == 'DELIVERED' || tr.status == "RECEIVED") ? (
                                             <td className="text-center">
-
-                                                <FaDownload
-                                                    className="ml-5 cursor-pointer"
-                                                    style={{ fontSize: "17px", color: "#949996" }}
-                                                    onClick={() => downloadHandler(tr)}
-                                                />
+                                                <a href={`https://backend.supamenu.rw/supamenu/api/invoices/order/281`} target="_blank">
+                                                    <FaDownload
+                                                        className="ml-5 cursor-pointer"
+                                                        style={{ fontSize: "17px", color: "#949996" }}
+                                                    />
+                                                </a>
                                             </td>
                                         )
                                             :

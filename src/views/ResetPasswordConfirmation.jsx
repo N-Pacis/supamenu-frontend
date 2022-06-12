@@ -6,16 +6,17 @@ import { clearMessage } from "../actions/messageAction";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/register.css"
 import { Link } from "react-router-dom";
-import { login } from "../actions/authActions";
+import { login, resetPassword } from "../actions/authActions";
 
 
-const Login = ({ }) => {
-    const initialUser = {
-        login: "",
+const ResetPasswordConfirmation = ({ }) => {
+    const initialData = {
+        email: "",
+        activationCode: "",
         password: "",
     };
 
-    const [loginData, setLoginData] = useState(initialUser);
+    const [formData, setFormData] = useState(initialData);
     const dispatch = useDispatch();
     const history = useHistory();
     const [loading,setLoading] = useState(false);
@@ -23,16 +24,15 @@ const Login = ({ }) => {
     const inputHandler = (e) => {
         var name = e.target.name;
         var value = e.target.value;
-        setLoginData({ ...loginData, [name]: value });
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = (e) => {
         setLoading(true)
         e.preventDefault();
-        dispatch(login(loginData))
+        resetPassword(formData)
             .then(() => {
                 setLoading(false)
-                history.push("/search");
             })
             .catch((err) => { 
                 setLoading(false)
@@ -53,13 +53,13 @@ const Login = ({ }) => {
             <div className="form-container">
                 <img className="form-container-logo" src={Logo2} />
                 <div className="form-container-description">
-                    <h1 className="welcome-text">Welcome ...</h1>
-                    <p className="welcome-sub-text">Sign in to continue</p>
+                    <h1 className="welcome-text">Password Reset</h1>
+                    <p className="welcome-sub-text">Enter your email to reset your password</p>
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
                             <label id="loginLabel" style={{ display: 'none' }}>Email</label>
                             <input
-                                name="login"
+                                name="email"
                                 onChange={inputHandler}
                                 type="text"
                                 id="loginError"
@@ -69,13 +69,23 @@ const Login = ({ }) => {
                             />
                         </div>
                         <div className="input-group">
-                            <label id="passwordLabel" style={{ display: 'none' }}>Password</label>
+                            <input
+                                name="activationCode"
+                                onChange={inputHandler}
+                                type="text"
+                                id="loginError"
+                                placeholder="Activation code sent to the email..."
+                                className="register-input"
+                                required
+                            />
+                        </div>
+                        <div className="input-group">
                             <input
                                 name="password"
                                 onChange={inputHandler}
                                 type="password"
-                                id="passwordError"
-                                placeholder="Password"
+                                id="loginError"
+                                placeholder="New password"
                                 className="register-input"
                                 required
                             />
@@ -85,12 +95,11 @@ const Login = ({ }) => {
                                 className="register-btn"
                                 disabled={loading}
                             >
-                                {loading ? <span>Wait ...</span> : <span>Sign In</span>}
+                                {loading ? <span>Wait ...</span> : <span>Reset Password</span>}
                             </button>
                         </div>
                         <div className="check-account">
-                            <h1 className="check-account-text">Don't have an account? <span><Link to="/register" className="check-account-link">Register</Link></span></h1>
-                            <h1 className="check-account-text">Forgot Password? <span><Link to="/reset-password" className="check-account-link">Forgot Password</Link></span></h1>
+                            <h1 className="check-account-text">Don't have a code? <span><Link to="/reset-password" className="check-account-link">Get a code</Link></span></h1>
                         </div>
                     </form>
                 </div>
@@ -99,4 +108,4 @@ const Login = ({ }) => {
     );
 };
 
-export default Login;
+export default ResetPasswordConfirmation;

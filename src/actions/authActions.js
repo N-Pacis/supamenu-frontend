@@ -78,6 +78,30 @@ export async function registerUser(dataToPost) {
   }
 }
 
+export async function initiatePasswordReset(dataToPost) {
+  try {
+      const url = `/auth/initiate-reset-password`;
+      let response = await axios.post(`${ENDPOINT}${url}`, dataToPost);
+      toast.success(response?.data?.message);
+      return { success: true, data: response?.data }
+  } catch (err) {
+      toast.error(err?.response?.data?.apierror.message || "Password Reset failed")
+      return { success: false, err }
+  }
+}
+
+export async function resetPassword(dataToPost) {
+  try {
+      const url = `/auth/reset-password`;
+      let response = await axios.post(`${ENDPOINT}${url}`, dataToPost);
+      toast.success(response?.data?.message);
+      return { success: true, data: response?.data }
+  } catch (err) {
+      toast.error(err?.response?.data?.apierror.message || "Password Reset failed")
+      return { success: false, err }
+  }
+}
+
 export const logout = () => (dispatch) => {
   AuthService.logout();
 

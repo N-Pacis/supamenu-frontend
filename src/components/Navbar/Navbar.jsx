@@ -17,7 +17,7 @@ const Navbar = ({
     let { firstName = "", lastName = "" } = user || {};
     const [toggleSidebar, setToggleSidebar] = useState(false)
 
-    const avatar = `https://ui-avatars.com/api/?name=${firstName}&bold=true`
+    const avatar = `https://ui-avatars.com/api/?name=${firstName}+${lastName}&bold=true`
 
     const toggleSidebarFn = () => {
         setToggleSidebar(!toggleSidebar)

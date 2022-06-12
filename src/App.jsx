@@ -20,6 +20,8 @@ import CardPaymentReceived from "./components/Payment/CardPaymentReceived";
 import Checkout from "./views/Checkout";
 import FlutterwaveRedirect from "./components/Payment/FlutterwaveRedirect";
 import ClientOrders from "./views/ClientOrders";
+import InitiateResetPassword from "./views/InitiateResetPassword";
+import ResetPasswordConfirmation from "./views/ResetPasswordConfirmation";
 
 function PrivateRoute({ children, ...rest }) {
   return (
@@ -74,6 +76,12 @@ export default function App() {
         </PublicRoute>
         <PublicRoute exact path="/register">
           <Register />
+        </PublicRoute>
+        <PublicRoute exact path="/reset-password">
+          <InitiateResetPassword />
+        </PublicRoute>
+        <PublicRoute exact path="/reset-password-confirmation">
+          <ResetPasswordConfirmation />
         </PublicRoute>
         <Route exact path="/restaurants/:id">
           <ViewRestaurant />

@@ -14,9 +14,6 @@ const MobilePayment = ({order}) => {
         SetActiveTab(tab)
     }
 
-    useEffect(()=>{
-        console.warn("Order "+order)
-    },[])
     return (
         <>
             {
