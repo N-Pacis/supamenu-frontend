@@ -6,6 +6,7 @@ import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../actions/authActions";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({
     dispatch,
@@ -47,12 +48,12 @@ const Navbar = ({
             </div>
 
             <div className={`user-options ${toggleSidebar && 'user-options-active'}`}>
-                <Link to={"/"} className="search-text navigation-item" >
+                <NavLink to={"/orders"} activeClassName="is-active" className="search-text navigation-item" >
                     My orders
-                </Link>
-                <Link to={"/search"} className="search-text navigation-item">
+                </NavLink>
+                <NavLink to={"/search"} activeClassName="is-active" className="search-text navigation-item">
                     Restaurants
-                </Link>
+                </NavLink>
                 {
                     isLoggedIn && (
                         <div className="user-profile-information">

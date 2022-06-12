@@ -6,6 +6,14 @@
     background-size: cover;
     padding:2% 0% !important;
 }
+.app-top-banner-payment{
+    background-color: var(--dark);
+    width: 100% !important;
+    height:20vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:2% 0% !important;
+}
 .app-title{
     margin-left: 20% !important;
     text-align: left;
@@ -141,8 +149,8 @@ padding: 4% 10% 2% 5% !important;
 }
 .payment-received-container{
     position:absolute;
-    top:230px;
-    left: 30% !important;
+    top:200px;
+    left: 15% !important;
     width: 70%;
     padding: 0% 20% !important;
 }

@@ -18,6 +18,7 @@ import ViewRestaurant from "./views/ViewRestaurant";
 import Menu from "./views/Menu";
 import CardPaymentReceived from "./components/Payment/CardPaymentReceived";
 import Checkout from "./views/Checkout";
+import FlutterwaveRedirect from "./components/Payment/FlutterwaveRedirect";
 
 function PrivateRoute({ children, ...rest }) {
   return (
@@ -83,8 +84,11 @@ export default function App() {
           <Checkout />
         </PrivateRoute>
         <Route exact path="/payment-initiated">
-          <CardPaymentReceived />
+          <FlutterwaveRedirect />
         </Route>
+        <PrivateRoute exact path="/payment-done">
+          <CardPaymentReceived />
+        </PrivateRoute>
       </Switch>
     </Router>
   );
