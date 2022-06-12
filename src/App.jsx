@@ -22,6 +22,7 @@ import FlutterwaveRedirect from "./components/Payment/FlutterwaveRedirect";
 import ClientOrders from "./views/ClientOrders";
 import InitiateResetPassword from "./views/InitiateResetPassword";
 import ResetPasswordConfirmation from "./views/ResetPasswordConfirmation";
+import PageNotFound from "./views/PageNotFound";
 
 function PrivateRoute({ children, ...rest }) {
   return (
@@ -101,6 +102,8 @@ export default function App() {
         <PrivateRoute exact path="/orders">
           <ClientOrders />
         </PrivateRoute>
+        
+        <Route component={PageNotFound} />
       </Switch>
     </Router>
   );
