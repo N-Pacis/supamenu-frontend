@@ -7,7 +7,6 @@ import MomoAirtelPayment from "./MomoAirtelPayment";
 import CashPayment from "./CashPayment";
 
 const MobilePayment = ({order}) => {
-    const [loading,setLoading] = useState(false)
     const [activeTab,SetActiveTab] = useState('payment-methods')
     
     const toggleActiveTab = (tab) => {

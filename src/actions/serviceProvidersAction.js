@@ -35,9 +35,7 @@ export function fetchServiceProviders() {
         try {
             const url = `/service-providers?page=${page}&size=${size}`;
 
-            let serviceProvidersFromBackend = await axios.get(`${ENDPOINT}${url}`, {
-                headers: authHeader(),
-            });
+            let serviceProvidersFromBackend = await axios.get(`${ENDPOINT}${url}`);
             serviceProvidersFromBackend = serviceProvidersFromBackend?.data.content;
             dispatch(getServiceProvidersSuccess(serviceProvidersFromBackend));
         } catch (error) {

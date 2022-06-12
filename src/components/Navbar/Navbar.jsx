@@ -48,9 +48,14 @@ const Navbar = ({
             </div>
 
             <div className={`user-options ${toggleSidebar && 'user-options-active'}`}>
-                <NavLink to={"/orders"} activeClassName="is-active" className="search-text navigation-item" >
-                    My orders
-                </NavLink>
+                {
+                    isLoggedIn && (
+                        <NavLink to={"/orders"} activeClassName="is-active" className="search-text navigation-item" >
+                            My orders
+                        </NavLink>
+                    )
+                }
+                
                 <NavLink to={"/search"} activeClassName="is-active" className="search-text navigation-item">
                     Restaurants
                 </NavLink>
