@@ -200,8 +200,30 @@ padding: 4% 10% 2% 5% !important;
 .go-back-btn:hover{
       background-color: #e78a17 !important;
     }
-
+    .orders-heading{
+        text-align: center;
+        color: var(--orange);
+        font-weight: bold;
+        font-size: 22px;
+        margin: 2% 0% 0% !important;
+    }
+    .payment-pending{
+        color: dodgerblue;
+    }
+    .placed{
+        color: var(--orange);
+    }
+    .order-success{
+        color:rgb(36, 160, 36)
+    }
+    .order-failed{
+        color:rgb(189, 27, 27)
+    }
     @media only screen and (max-width: 768px){
+        .app-top-banner-payment{
+            height:10vh;
+            width: 100% !important;
+        }
         .payment-received-container{
             width: 100% !important;
             left:0% !important;

@@ -7,6 +7,7 @@ import { FaSearch } from "react-icons/fa";
 import RestaurantCard from "../components/Search/RestaurantCard";
 import { connect } from "react-redux";
 import { fetchServiceProviders, searchServiceProviders } from "../actions/serviceProvidersAction"
+import LoadingComponent from "../components/LoadingComponent";
 
 const Search = ({
     dispatch,
@@ -15,6 +16,7 @@ const Search = ({
 }) => {
     const [searchData, setSearchData] = useState('')
     const [isSearching, setIsSeaching] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const inputHandler = (e) => {
         var value = e.target.value;
@@ -22,6 +24,7 @@ const Search = ({
     };
 
     useEffect(() => {
+        setIsLoading(true)
         if (searchData != '') {
             dispatch(searchServiceProviders(searchData))
             setIsSeaching(true)
@@ -29,10 +32,13 @@ const Search = ({
         else {
             setIsSeaching(false)
         }
+        setIsLoading(false)
     }, [searchData])
 
     useEffect(() => {
+        setIsLoading(true)
         dispatch(fetchServiceProviders())
+        setIsLoading(false)
     }, [dispatch])
 
     return (
@@ -58,19 +64,23 @@ const Search = ({
 
                     <div className="nearby-restaurants-container">
                         <h1 className="nearby-title">Nearby Restaurants</h1>
-                        <div className="nearby-restaurants-card-holder">
-                            {
-                                serviceProvidersArr.map(restaurant => (
-                                    <RestaurantCard
-                                        key={restaurant.id}
-                                        imageUrl={restaurant.defaultPic?.url}
-                                        title={restaurant.name}
-                                        description={restaurant.address}
-                                        id={restaurant.id}
-                                    />
-                                ))
-                            }
-                        </div>
+                        {
+                            isLoading ? <LoadingComponent />
+                                :
+                                <div className="nearby-restaurants-card-holder">
+                                    {
+                                        serviceProvidersArr.map(restaurant => (
+                                            <RestaurantCard
+                                                key={restaurant.id}
+                                                imageUrl={restaurant.defaultPic?.url}
+                                                title={restaurant.name}
+                                                description={restaurant.address}
+                                                id={restaurant.id}
+                                            />
+                                        ))
+                                    }
+                                </div>
+                        }
                     </div>
                 }
             </div>

@@ -22,8 +22,8 @@
 
 .user-options{
     display: flex;
-    width: 50%;
-    justify-content: space-evenly;
+    width: 40%;
+    justify-content: space-between;
 }
 .search-icon,.bell-icon{
     font-size: 20px;
@@ -58,11 +58,12 @@
 }
 .user-profile-information{
     display: flex;
-    justify-content: space-between;
     width: 40%;
 }
 
 .logout-icon{
+    position: absolute;
+    left: 90% !important;
     font-size: 27px;
     color: rgb(240, 23, 23);
     margin-left: 5% !important;
@@ -121,6 +122,10 @@
     }
     .username{
         margin-left: 20% !important;
+    }
+    .logout-icon{
+        top:10px;
+        left: 85% !important;
     }
 }
 

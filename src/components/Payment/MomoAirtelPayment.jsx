@@ -28,7 +28,7 @@ const MomoAirtelPayment = ({paymentMethod,orderInfo}) => {
         sendMomoPayment(formData)
             .then((res) => {
                 setLoading(false)
-                history.push("/search")
+                history.push("/orders")
             })
             .catch((err) => {
                 setLoading(false)

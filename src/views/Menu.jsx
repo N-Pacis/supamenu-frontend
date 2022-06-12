@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { saveCartItemsFn, saveRestaurantInfoFn } from "../actions/cartItemsAction";
 import { useParams } from "react-router-dom";
 import { fetchById, fetchMenuCategories } from "../actions/serviceProvidersAction";
+import LoadingComponent from "../components/LoadingComponent";
 
 const Menu = ({
     dispatch,
@@ -16,13 +17,16 @@ const Menu = ({
     const {id} = useParams();
     const [serviceProvider,setServiceProvider] = useState({})
     const [categories,setCategories] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(async()=>{
+        setIsLoading(true)
         let provider = await fetchById(id)
         let categoriesFromBackend = await fetchMenuCategories(id)
         dispatch(saveRestaurantInfoFn(provider))
         setServiceProvider(provider)
         setCategories(categoriesFromBackend)
+        setIsLoading(false)
     },[])
 
    
@@ -61,34 +65,41 @@ const Menu = ({
 
     return (
         <>
-            <div className="app-top-banner">
-                <Navbar />
-                <h2 className="app-title">{serviceProvider?.name}</h2>
-                <p className="app-slogan">{serviceProvider?.address}</p>
-            </div>
-            <div className="app-low-banner">
-                <div className="app-restaurant-image">
-                    <img
-                        src={serviceProvider?.defaultPic?.url}
-                        className="app-restaurant-image-img"
-                    />
+            {
+                isLoading ? 
+                    <LoadingComponent />
+                :
+                <>                
+                <div className="app-top-banner">
+                    <Navbar />
+                    <h2 className="app-title">{serviceProvider?.name}</h2>
+                    <p className="app-slogan">{serviceProvider?.address}</p>
                 </div>
-                <div className="categories">
-                    <h1 className="menu-title">Menu</h1>
-                    <MenuCategories
-                        categories={categories}
-                        onAddToCart={onAddToCartFn}
-                        onRemoveFromCart={onRemoveFromCartFn}
-                        isFoundInCart={isFoundInCart}
-                    />
+                <div className="app-low-banner">
+                    <div className="app-restaurant-image">
+                        <img
+                            src={serviceProvider?.defaultPic?.url}
+                            className="app-restaurant-image-img"
+                        />
+                    </div>
+                    <div className="categories">
+                        <h1 className="menu-title">Menu</h1>
+                        <MenuCategories
+                            categories={categories}
+                            onAddToCart={onAddToCartFn}
+                            onRemoveFromCart={onRemoveFromCartFn}
+                            isFoundInCart={isFoundInCart}
+                        />
+                    </div>
+                    <div className="cart">
+                        <CartItems
+                            cartItems={cartItemsArr}
+                            onUpdateCart={onUpdateCartFn}
+                        />
+                    </div>
                 </div>
-                <div className="cart">
-                    <CartItems
-                        cartItems={cartItemsArr}
-                        onUpdateCart={onUpdateCartFn}
-                    />
-                </div>
-            </div>
+                </>
+            }
         </>
     );
 };

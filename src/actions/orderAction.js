@@ -2,7 +2,6 @@ import axios from 'axios';
 import authHeader from '../services/auth-header';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { saveOrderInfoFn } from './cartItemsAction';
 toast.configure();
 
 
@@ -15,6 +14,22 @@ export const SEND_ORDER_FAILURE = "SEND_ORDER_FAILURE";
 export async function fetchSeats(id) {
     try {
         const url = `/seats/list/free-seats/service-provider/${id}`;
+
+        let seatsFromBackend = await axios.get(`${ENDPOINT}${url}`, {
+            headers: authHeader(),
+        });
+        seatsFromBackend = seatsFromBackend?.data;
+        return seatsFromBackend
+    }
+    catch (error) {
+        toast.error("Getting seats Failed");
+    }
+}
+
+export async function fetchOrders(page = 0,id) {
+    let limit = 5
+    try {
+        const url = `/orders/customer-id/${id}?page=${page}&size=${limit}`;
 
         let seatsFromBackend = await axios.get(`${ENDPOINT}${url}`, {
             headers: authHeader(),

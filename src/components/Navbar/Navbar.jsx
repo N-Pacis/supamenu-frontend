@@ -62,15 +62,19 @@ const Navbar = ({
                                 src={avatar}
                                 className="user-avatar"
                             />
-                            <FaSignOutAlt
-                                className="logout-icon"
-                                title="Logout"
-                                onClick={logoutFn}
-                            />
                         </div>
                     )
                 }
             </div>
+                {
+                    isLoggedIn && (
+                        <FaSignOutAlt
+                        className="logout-icon"
+                        title="Logout"
+                        onClick={logoutFn}
+                    />
+                    )
+                }
         </div>
     );
 };
