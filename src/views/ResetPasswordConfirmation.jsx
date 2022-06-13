@@ -33,6 +33,7 @@ const ResetPasswordConfirmation = ({ }) => {
         resetPassword(formData)
             .then(() => {
                 setLoading(false)
+                history.push("/login")
             })
             .catch((err) => { 
                 setLoading(false)
